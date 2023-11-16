@@ -1,18 +1,39 @@
 {% extends 'base.html' %}
 
 {% block main %}
-
-{% if articles|length < 1 %}
-    <h2 style="text-align: center;">No Articles in this Blog :(</h2>
-    {% else %}
-    <div id="blog" class="articles">
-        {% for article in articles %}
-        <div class="article">
-            <p>{{article.title}}</p>
-            <p>{{article.content}}</p>
-            <p>{{article.created_at}}</p>
-        </div>
-        {% endfor %}
+<section class="hero-section">
+    <div class="hero-image"></div>
+    <div class="hero-dark"></div>
+    <div class="hero-content">
+        <h2>Welcome to</h2>
+        <h1>Yp's Blog</h1>
     </div>
+</section>
+<section id="blog">
+<h2 class="recent-articles-title">Recent Articles</h2>
+<div class="recent-articles">
+    {% if articles|length < 1 %}
+        <h2 class="no-articles">No Articles in this Blog :(</h2>
+    {% else %}
+        <div class="articles">
+            {% for article in articles[:4]|sort(attribute='created_at') %}
+            <div class="article">
+                <div class="article-image">
+
+                </div>
+                <div class="article-title">
+                    {{article.title}} 
+                </div>
+                <div class="article-content">
+                    {{article.content}}
+                </div>
+                <div class="article-date">
+                    {{article.created_at}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     {% endif %}
+</div>
+</section>
 {% endblock %}

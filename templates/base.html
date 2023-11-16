@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">  
     <title>20231114_Assessment_Joao_Yp</title>
     {% block head %}
     {% endblock %}
@@ -11,12 +15,12 @@
 <body>
     <header>
         <div class="first-section">
-            <h1>Yp's Blog</h1>
+            <h1 class="title-logo"><a href="/">Yp's Blog</a></h1>
         </div>
         <nav class="second-section">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="/#blog">Blog</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
         </nav>

@@ -39,6 +39,11 @@ def index():
         return render_template("index.html", articles=articles)
 
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 @app.route("/article/<int:id>")
 def getArticle(id):
     article = Article.query.get_or_404(id)
