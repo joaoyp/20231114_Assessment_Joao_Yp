@@ -53,13 +53,17 @@ table {
 header{
     width: 100%;
     background-color: #ffffff;
-    height: 6rem;
+    height: 7rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 10;
     position: sticky;
     top: 0;
+}
+
+.logo{
+    width: 50%;
 }
 
 .title-logo a{
@@ -146,11 +150,11 @@ footer{
 
 .hero-content h2{
     margin-top: 2rem;
-    font-size: 50px;
+    font-size: 60px;
 }
 
 #blog{
-    padding-top: 6rem;
+    padding-top: 7rem;
 }
 
 .articles{
@@ -187,6 +191,11 @@ footer{
     }
 }
 
+.articles a{
+    text-decoration: none;
+    color: #000000;
+}
+
 .recent-articles-title{
     font-size: xx-large;
     text-align: center;
@@ -206,14 +215,14 @@ footer{
     height: fit-content;
     justify-content: center;
     margin-top: 3rem;
-    margin-bottom: 6rem;
+    margin-bottom: 7rem;
     padding-bottom: 2rem;
 }
 
 .article{
     height: fit-content;
     font-family: 'Rajdhani', sans-serif;
-    height: 20rem;
+    height: 25rem;
     width: 20rem;
     display: flex;
     flex-direction: column;
@@ -233,16 +242,30 @@ footer{
 .article-title{
     font-size: xx-large;
     padding-left: 1rem;
+    padding-right: 1rem;
+    height: 10%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .article-content{
     font-size: large;
+    height: 6rem;
     padding-left: 1rem;
+    padding-right: 1rem;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .article-date{
-    font-size: medium;
+    height: fit-content;
+    margin-top: 2rem;
     text-align: end;
+    font-size: medium;
     padding-right: 1rem;
     padding-bottom: 1rem;
 }

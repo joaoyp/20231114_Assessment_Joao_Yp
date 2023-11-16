@@ -5,8 +5,8 @@
     <div class="hero-image"></div>
     <div class="hero-dark"></div>
     <div class="hero-content">
-        <h2>Welcome to</h2>
-        <h1>Yp's Blog</h1>
+        <h1>Welcome to</h1>
+        <h2>my life's blog</h2>
     </div>
 </section>
 <section id="blog">
@@ -16,21 +16,23 @@
         <h2 class="no-articles">No Articles in this Blog :(</h2>
     {% else %}
         <div class="articles">
-            {% for article in articles[:4]|sort(attribute='created_at') %}
-            <div class="article">
-                <div class="article-image">
+            {% for article in articles[:4]|sort(attribute='created_at', reverse=True) %}
+            <a href="{{ url_for('getArticle', id=article.id) }}">
+                <div class="article">
+                    <div class="article-image">
 
+                    </div>
+                    <div class="article-title">
+                        {{article.title}} 
+                    </div>
+                    <div class="article-content">
+                        {{article.content}}
+                    </div>
+                    <div class="article-date">
+                        {{article.created_at.strftime('%Y-%m-%d %H:%m%p')}}
+                    </div>
                 </div>
-                <div class="article-title">
-                    {{article.title}} 
-                </div>
-                <div class="article-content">
-                    {{article.content}}
-                </div>
-                <div class="article-date">
-                    {{article.created_at}}
-                </div>
-            </div>
+            </a>
             {% endfor %}
         </div>
     {% endif %}
