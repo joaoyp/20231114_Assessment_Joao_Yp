@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
-{% block body %}
-<h1>Blog</h1>
+{% block main %}
 
-{% for article in articles %}
-<p>{{article.title}}</p>
-<p>{{article.content}}</p>
-<p>{{article.created_at}}</p>
-{% endfor %}
-
+{% if articles|length < 1 %}
+    <h2 style="text-align: center;">No Articles in this Blog :(</h2>
+    {% else %}
+    <div id="blog" class="articles">
+        {% for article in articles %}
+        <div class="article">
+            <p>{{article.title}}</p>
+            <p>{{article.content}}</p>
+            <p>{{article.created_at}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 {% endblock %}

@@ -16,7 +16,7 @@ class Article(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return "<Article %r>" % self.title
+        return f"<Article id: {self.title} - {self.content} - {self.imagePath}>"
 
 
 @app.route("/")
@@ -108,4 +108,4 @@ def deleteArticle(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=3000)

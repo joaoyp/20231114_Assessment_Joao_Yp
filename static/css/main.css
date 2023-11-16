@@ -5,3 +5,56 @@ body {
     height: 100%;
     overflow-x: hidden;
 }
+
+header{
+    width: 100%;
+    background-color: #f5efdf;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.first-section{
+    margin: 0;
+    width: fit-content;
+    padding-left: 4rem;
+    color: #000000;
+}
+
+.first-section h1{
+    margin: 0;
+}
+
+.second-section ul{
+    display: flex;
+    font-size: x-large;
+    width: fit-content;
+    padding-right: 4rem;
+    gap: 2rem;
+    list-style-type: none;
+}
+
+li a{
+    text-decoration: none;
+    color: #000000;
+}
+
+main{
+   min-height: calc(100vh - 6rem);
+}
+
+footer{
+    width: 100%;
+    background-color: #ffffff;
+    height: 16rem;
+    border-top: 1px solid #3c3c3c;
+}
+
+.articles{
+    display: flex;
+}
+
+.article{
+    
+}
