@@ -10,6 +10,11 @@
     </div>
 </section>
 <section id="blog">
+<div class="create-article">
+    <a href="/article/create">
+        <button class="btn-create-article">Create Article <span class="plus-sign">+</span></button>
+    </a>
+</div>
 <h2 class="recent-articles-title">Recent Articles</h2>
 <div class="recent-articles">
     {% if articles|length < 1 %}
@@ -17,19 +22,17 @@
     {% else %}
         <div class="articles">
             {% for article in articles[:4]|sort(attribute='created_at', reverse=True) %}
-            <a href="{{ url_for('getArticle', id=article.id) }}">
+            <a href="/article/{{article.id}}">
                 <div class="article">
-                    <div class="article-image">
-
-                    </div>
-                    <div class="article-title">
+                    <img class="article-image" src="{{ url_for('static', filename='uploaded_images/' + article.imagePath) }}" alt="Article Image">
+                    <div class="article-title">                        
                         {{article.title}} 
                     </div>
                     <div class="article-content">
                         {{article.content}}
                     </div>
                     <div class="article-date">
-                        {{article.created_at.strftime('%Y-%m-%d %H:%m%p')}}
+                        {{article.created_at.strftime('%H:%M - %Y/%m/%d')}}
                     </div>
                 </div>
             </a>

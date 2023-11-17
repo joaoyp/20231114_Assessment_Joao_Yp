@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section class="create-form">
+    <form action="/article/create" method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" id="title">
+        <input type="text" name="content" id="content">
+        <input type="file" name="image" id="image">
+        <input type="submit" value="Create Article">
+      </form>
+</section>
+{% endblock %}

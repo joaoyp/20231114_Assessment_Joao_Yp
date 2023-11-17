@@ -7,23 +7,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">  
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">  
-    <title>20231114_Assessment_Joao_Yp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">  
+    <title>Yp's Life Blog</title>
     {% block head %}
     {% endblock %}
 </head>
 <body>
     <header>
-        <div class="first-section">
+        <div class="header-first">
             <a href="/">
                 <img class="logo" src="/static/images/logo.png" alt="logo">
             </a>
         </div>
-        <nav class="second-section">
+        <nav class="header-second">
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/#blog">Blog</a></li>
                 <li><a href="/about">About</a></li>
+                <li><a href="/contacts">Contacts</a></li>
             </ul>
         </nav>
     </header>
@@ -31,6 +33,27 @@
         {% block main %}
         {% endblock %}
     </main>
-    <footer></footer>
+    <footer>
+        <div class="footer-first">
+            <img class="footer-logo" src="/static/images/logo.png" alt="logo">
+        </div>
+        <div class="footer-second">
+            <h3>Navigate</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#blog">Blog</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contacts">Contacts</a></li>
+            </ul>
+        </div>
+        <div class="footer-third">
+            <h3>Subscribe to our <span style="color: darkorange;">Newsletter</span>:</h3>
+            <p>Be the first to receive fresh content straight to your inbox.</p>
+            <form class="form-newsletter" action="/subscribe" method="post">
+                <input class="input-email-newsletter" type="email" id="email" name="email" placeholder="Your Email" required>
+                <button class="btn-subscribe-newsletter" type="submit">Subscribe</button>
+            </form>
+        </div>
+    </footer>
 </body>
 </html>

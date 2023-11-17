@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    {{article.title}}
+    {{article.content}}
+    <img src="{{ url_for('static', filename='uploaded_images/' + article.imagePath) }}" alt="Article Image">
+{% endblock %}

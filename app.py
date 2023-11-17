@@ -44,6 +44,11 @@ def about():
     return render_template("about.html")
 
 
+@app.route("/contacts")
+def contacts():
+    return render_template("contacts.html")
+
+
 @app.route("/article/<int:id>")
 def getArticle(id):
     article = Article.query.get_or_404(id)
@@ -59,20 +64,24 @@ def getArticle(id):
 
         return jsonify(article_json)
     else:
-        return f"""<div>
-                <h1>{article.title}</h1>
-                <p>{article.content}</p>  
-                <p>{article.imagePath}</p>  
-              </div>"""  # Return a render template of the article page
+        return render_template("article.html", article=article)
 
 
-@app.route("/article/create", methods=["POST"])
+@app.route("/article/create", methods=["GET", "POST"])
 def createArticle():
-    title = request.form["title"]
-    content = request.form["content"]
-    imagePath = request.form["imagePath"]
+    if request.method == "POST":
+        title = request.form["title"]
+        content = request.form["content"]
+        if "image" in request.files:
+            image = request.files["image"]
+            image.save(f"./static/uploaded_images/{image.filename}")
 
-    new_article = Article(title=title, content=content, imagePath=imagePath)
+            imagePath = f"/{image.filename}"
+
+        new_article = Article(title=title, content=content, imagePath=imagePath)
+
+    else:
+        return render_template("createArticle.html")
 
     try:
         db.session.add(new_article)
@@ -110,6 +119,11 @@ def deleteArticle(id):
         return redirect("/")
     except:
         return "Error"  # Return a render template of an error page
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 
 
 if __name__ == "__main__":
