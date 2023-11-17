@@ -5,5 +5,14 @@
 {% endblock %}
 
 {% block main %}
-<h1>About</h1>
+<section class="about">
+    <img class="about-image" src="{{ url_for('static', filename='images/Me2.jpg') }}" alt="Image of myself">
+    <div class="about-article">
+        <h2 class="about-article-title">About Me</h2>
+        <div class="about-article-content">
+            <p>Suspendisse ac leo a augue euismod faucibus. Nullam non condimentum mauris. Aliquam et bibendum est. Donec ultricies ultrices metus. Nulla dictum lobortis leo non pellentesque. Donec sed rhoncus tortor, in dignissim eros. Mauris pulvinar suscipit purus, eget posuere libero dignissim eget. </p>
+            <p>Suspendisse ac leo a augue euismod faucibus. Nullam non condimentum mauris. Aliquam et bibendum est. Donec ultricies ultrices metus. Nulla dictum lobortis leo non pellentesque. Donec sed rhoncus tortor, in dignissim eros. Mauris pulvinar suscipit purus, eget posuere libero dignissim eget. </p>
+        </div>
+    </div>
+</section>
 {% endblock %}
