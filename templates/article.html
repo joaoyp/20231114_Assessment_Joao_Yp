@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<title>{{article.id}} | Yp's Life Blog</title>
+{% endblock %}
+
 {% block main %}
     {{article.title}}
     {{article.content}}

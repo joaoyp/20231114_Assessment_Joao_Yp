@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<title>Home | Yp's Life Blog</title>
+{% endblock %}
+
+
 {% block main %}
 <section class="hero-section">
     <div class="hero-image"></div>
@@ -15,7 +20,7 @@
         <button class="btn-create-article">Create Article <span class="plus-sign">+</span></button>
     </a>
 </div>
-<h2 class="recent-articles-title">Recent Articles</h2>
+<h2 class="articles-title">Recent Articles</h2>
 <div class="recent-articles">
     {% if articles|length < 1 %}
         <h2 class="no-articles">No Articles in this Blog :(</h2>
@@ -39,6 +44,10 @@
             {% endfor %}
         </div>
     {% endif %}
+</div>
+<h2 class="articles-title">All Articles</h2>
+<div class="all-articles">
+
 </div>
 </section>
 {% endblock %}

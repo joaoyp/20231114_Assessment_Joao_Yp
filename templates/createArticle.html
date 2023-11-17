@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<title>New | Yp's Life Blog</title>
+{% endblock %}
+
+
 {% block main %}
 <section class="create-form">
     <form action="/article/create" method="POST" enctype="multipart/form-data">

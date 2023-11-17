@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -88,25 +90,32 @@ def createArticle():
         db.session.commit()
         return redirect("/")
     except:
-        return "Error"  # Return a render template of an error page
+        return render_template(
+            "error.html",
+            message="An error occurred while creating the article. Please try again.",
+        )
 
 
 @app.route("/article/update/<int:id>", methods=["PUT"])
 def updateArticle(id):
     article = Article.query.get_or_404(id)
 
-    if request.method == "PUT":
-        article.title = request.form["title"]
-        article.content = request.form["content"]
-        article.imagePath = request.form["imagePath"]
-    else:
-        return render_template("index.html", article=article)
+    article.title = request.form["title"]
+    article.content = request.form["content"]
+    if "image" in request.files:
+        image = request.files["image"]
+        image.save(f"./static/uploaded_images/{image.filename}")
+
+        article.imagePath = f"/{image.filename}"
 
     try:
         db.session.commit()
         return redirect("/")
     except:
-        return "Error"  # Return a render template of an error page
+        return render_template(
+            "error.html",
+            message="An error occurred while updating the article. Please try again.",
+        )
 
 
 @app.route("/article/delete/<int:id>", methods=["DELETE"])
@@ -114,11 +123,17 @@ def deleteArticle(id):
     article_to_delete = Article.query.get_or_404(id)
 
     try:
+        if article_to_delete.imagePath:
+            if os.path.exists("static/uploaded_images" + article_to_delete.imagePath):
+                os.remove("static/uploaded_images" + article_to_delete.imagePath)
         db.session.delete(article_to_delete)
         db.session.commit()
         return redirect("/")
     except:
-        return "Error"  # Return a render template of an error page
+        return render_template(
+            "error.html",
+            message="An error occurred while deleting the article. Please try again.",
+        )
 
 
 @app.errorhandler(404)
