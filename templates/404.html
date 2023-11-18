@@ -2,8 +2,22 @@
 
 {% block head %}
 <title>404 | Yp's Life Blog</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/404.css')}}">
 {% endblock %}
 
 {% block main %}
-<h1>404</h1>
+<img class="image" src="{{ url_for('static', filename='images/404.png') }}" alt="404">
+<div class="title">
+    <h1>404</h1>
+</div>
+<div class="bottom">
+    <div>
+        <h3>Oops, looks like the page you requested doesn't exist.</h3>
+    </div>
+    <div class="back">
+        <a href="/">
+            <button class="btn-back">Go Back</button>
+        </a>
+    </div>
+</div>
 {% endblock %}

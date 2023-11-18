@@ -2,21 +2,22 @@
 
 {% block head %}
 <title>Contacts | Yp's Life Blog</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/contacts.css')}}">
 {% endblock %}
 
 {% block main%}
-<section class="text-section">
-    <h2></h2>
-    <h3></h3>
+<section class="image-section">
+
 </section>
 <section class="contact-section">
+    <h2 class="title">Contact me</h2>
     <form class="contact-form" action="/">
         {{ form.csrf_token }}
-        <p>{{form.name.label(class="form-name-label")}} <br> {{form.name(class="form-name-input",size=30)}}</p>
+        <p>{{form.name.label(class="form-name-label")}} <br> {{form.name(class="form-name-input")}}</p>
         <p>{{form.email.label(class="form-email-label")}} <br> {{form.email(class="form-email-input")}}</p>
         <p>{{form.subject.label(class="form-subject-label")}} <br> {{form.subject(class="form-subject-input")}}</p>
         <p>{{form.message.label(class="form-message-label")}} <br> {{form.message(class="form-message-input")}}</p>
-        <p>{{form.submit(class="form-submit")}}</p>
+        <p class="submit-p">{{form.submit(class="form-submit")}}</p>
       </form>
 </section>
 {% endblock %}
