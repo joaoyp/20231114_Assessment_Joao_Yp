@@ -90,6 +90,8 @@ python3 app.py
 | :------ | :------------------------- |
 | `POST`  | `Deletes an article by ID` |
 
+## Screenshots
+
 ## Tech Stack
 
 Flask, HTML, CSS
