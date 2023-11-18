@@ -17,7 +17,7 @@ python3 app.py
 ## Features
 
 - CRUD of articles
-- Depending on the header it returns an article in JSON or HTML (the page of the article)
+- Depending on the header it returns an article in JSON or HTML (the page of the article)<br />
   &nbsp; **Note:** See [API Reference](#api-reference) for more information
 - Pagination of articles
 - RichText Box when creating or updating an article for a more costumized article.
