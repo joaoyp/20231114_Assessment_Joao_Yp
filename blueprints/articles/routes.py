@@ -6,6 +6,7 @@ from .models import Article
 from database.db import db
 from .forms import CreateArticle, UpdateArticle
 from werkzeug.utils import secure_filename
+import uuid
 
 articles_bp = Blueprint("articles", __name__, template_folder="/templates")
 
@@ -58,7 +59,7 @@ def createArticle():
             content = form.content.data
 
             if form.image.data:
-                imageName = secure_filename(form.image.data.filename)
+                imageName = secure_filename(str(uuid.uuid4()) + ".jpg")
                 form.image.data.save(f"static/uploaded_images/{imageName}")
                 imagePath = f"/{imageName}"
 
@@ -89,7 +90,7 @@ def updateArticle(id):
             article.content = form.content.data
 
             if form.image.data:
-                imageName = secure_filename(form.image.data.filename)
+                imageName = secure_filename(str(uuid.uuid4()) + ".jpg")
                 form.image.data.save(f"static/uploaded_images/{imageName}")
                 article.imagePath = f"/{imageName}"
     else:
@@ -105,7 +106,7 @@ def updateArticle(id):
         )
 
 
-@articles_bp.route("/article/delete/<int:id>", methods=["DELETE"])
+@articles_bp.route("/article/delete/<int:id>", methods=["POST"])
 def deleteArticle(id):
     article_to_delete = Article.query.get_or_404(id)
 

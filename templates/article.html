@@ -6,6 +6,21 @@
 {% endblock %}
 
 {% block main %}
+    <div class="top-actions">
+        <div class="back">
+            <a href="/">
+                <button class="btn-back">< Back</button>
+            </a>
+        </div>
+        <div class="actions">
+            <a href="{{ url_for('articles.updateArticle', id=article.id) }}">
+                <button class="btn-update"><div class="fa fa-pencil" style="font-size:24px; color: rgb(255, 255, 255);"></div></button>
+            </a>
+            <form method="post" action="{{ url_for('articles.deleteArticle', id=article.id) }}">
+                <button class="btn-delete" type="submit"><div class="fa fa-trash" style="font-size:24px; color: rgb(255, 255, 255);"></div></button>
+            </form>
+        </div>
+    </div>
     <div class="top-background">
         <h1>{{article.title}}</h1>
     </div>
