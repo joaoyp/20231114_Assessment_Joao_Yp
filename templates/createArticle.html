@@ -2,16 +2,33 @@
 
 {% block head %}
 <title>New | Yp's Life Blog</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/create-article.css')}}">
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    CKEDITOR.replace( 'createRich', {
+      uiColor: '#ffffff',
+      height: 500
+    });
+  });
+</script>
 {% endblock %}
 
 
 {% block main %}
-<section class="create-form">
-    <form action="/article/create" method="POST" enctype="multipart/form-data">
-        <input type="text" name="title" id="title">
-        <input type="text" name="content" id="content">
-        <input type="file" name="image" id="image">
-        <input type="submit" value="Create Article">
+<section class="hero-section">
+  <div class="hero-image"></div>
+  <div class="hero-dark"></div>
+  <div class="hero-content">
+      <h1>Create an Article</h1>
+  </div>
+</section>
+<section class="create-section">
+    <form class="create-form" action="/article/create" method="POST" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <p>{{form.title.label(class="form-title-label")}} <br> {{form.title(class="form-title-input",size=30)}}</p>
+        <p>{{form.content.label(class="form-content-label")}} <br> {{form.content(class="form-content-input", id="createRich")}}</p>
+        <p>{{form.image.label(class="form-image-label")}} <br> {{form.image(class="form-image-input")}}</p>
+        <p class="submit-p">{{form.submit(class="form-submit")}}</p>
       </form>
 </section>
 {% endblock %}

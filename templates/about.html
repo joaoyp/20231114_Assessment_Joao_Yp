@@ -2,16 +2,29 @@
 
 {% block head %}
 <title>About | Yp's Life Blog</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/about.css')}}">
 {% endblock %}
 
 {% block main %}
 <section class="about">
     <img class="about-image" src="{{ url_for('static', filename='images/Me2.jpg') }}" alt="Image of myself">
     <div class="about-article">
-        <h2 class="about-article-title">About Me</h2>
+        <h2 class="about-article-title">Hello, I'm João</h2>
+        <h3 class="about-article-subtitle">and I'm a Software Developer from Portugal</h3>
         <div class="about-article-content">
             <p>Suspendisse ac leo a augue euismod faucibus. Nullam non condimentum mauris. Aliquam et bibendum est. Donec ultricies ultrices metus. Nulla dictum lobortis leo non pellentesque. Donec sed rhoncus tortor, in dignissim eros. Mauris pulvinar suscipit purus, eget posuere libero dignissim eget. </p>
             <p>Suspendisse ac leo a augue euismod faucibus. Nullam non condimentum mauris. Aliquam et bibendum est. Donec ultricies ultrices metus. Nulla dictum lobortis leo non pellentesque. Donec sed rhoncus tortor, in dignissim eros. Mauris pulvinar suscipit purus, eget posuere libero dignissim eget. </p>
+        </div>
+        <div class="about-contact">
+            <a href="/contacts">
+                <button class="btn-about-contact">
+                    Contact Me
+                </button>
+            </a>
+        </div>
+        <div class="about-social">
+            <a href="https://github.com/joaoyp" target="_blank"><div class="fa fa-github" style="font-size:36px; color: black;"></div></a>
+            <a href="https://www.linkedin.com/in/joao-yp/" target="_blank"><div class="fa fa-linkedin" style="font-size:36px; color: black;"></div></a>
         </div>
     </div>
 </section>

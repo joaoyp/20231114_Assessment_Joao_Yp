@@ -2,6 +2,7 @@
 
 {% block head %}
 <title>Home | Yp's Life Blog</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
 {% endblock %}
 
 
@@ -34,10 +35,10 @@
                         {{article.title}} 
                     </div>
                     <div class="article-content">
-                        {{article.content}}
+                        {{article.content | striptags}}
                     </div>
                     <div class="article-date">
-                        {{article.created_at.strftime('%H:%M - %Y/%m/%d')}}
+                        {{article.created_at.strftime('%Y/%m/%d - %H:%M')}}
                     </div>
                 </div>
             </a>

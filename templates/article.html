@@ -2,10 +2,14 @@
 
 {% block head %}
 <title>{{article.id}} | Yp's Life Blog</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/article.css')}}">
 {% endblock %}
 
 {% block main %}
-    {{article.title}}
-    {{article.content}}
-    <img src="{{ url_for('static', filename='uploaded_images/' + article.imagePath) }}" alt="Article Image">
+    <div class="top-background">
+        <h1>{{article.title}}</h1>
+    </div>
+    <img class="article-image" src="{{ url_for('static', filename='uploaded_images/' + article.imagePath) }}" alt="Article Image">
+    <p class="created-at">created at: <span class="article-date">{{article.created_at.strftime('%Y/%m/%d - %H:%M')}}</span></p>
+    <div class="article-text">{{article.content| safe}}</div>
 {% endblock %}
