@@ -21,7 +21,7 @@
             <button class="btn-create-article">Create Article <span class="plus-sign">+</span></button>
         </a>
     </div>
-    <h2 class="articles-title">Recent Articles</h2>
+    <h2 id="recent" class="articles-title">Recent Articles</h2>
     <div class="recent-articles">
         {% if articles.items|length < 1 %}
             <h2 class="no-articles">No Articles in this Blog :(</h2>
@@ -46,7 +46,7 @@
             </div>
         {% endif %}
     </div>
-    <h2 class="articles-title">All Articles</h2>
+    <h2 id="all" class="articles-title">All Articles</h2>
     <div class="all-articles">
         {% if articles.items|length < 1 %}
             <h2 class="no-articles">No Articles in this Blog :(</h2>

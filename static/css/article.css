@@ -8,12 +8,14 @@ main{
 
 .top-actions{
     width: 100%;
-    height: 5vh;
+    height: fit-content;
     background-color: whitesmoke;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem;
+    padding-top: 2rem;
+
 }
 
 .back{
