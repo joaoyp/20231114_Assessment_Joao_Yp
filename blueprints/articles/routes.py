@@ -13,7 +13,12 @@ articles_bp = Blueprint("articles", __name__, template_folder="/templates")
 
 @articles_bp.route("/")
 def index():
-    articles = Article.query.order_by(desc(Article.created_at)).all()
+    page = request.args.get("page", 1, type=int)
+    articles = Article.query.order_by(desc(Article.created_at)).paginate(
+        page=page, per_page=8
+    )
+
+    recentArticles = Article.query.order_by(desc(Article.created_at))[:4]
 
     if request.headers.get("Accept") == "application/json":
         articles_json = [
@@ -24,11 +29,13 @@ def index():
                 "imagePath": article.imagePath,
                 "created_at": article.created_at,
             }
-            for article in articles
+            for article in articles.items
         ]
         return jsonify(articles_json)
     else:
-        return render_template("index.html", articles=articles)
+        return render_template(
+            "index.html", articles=articles, recentArticles=recentArticles
+        )
 
 
 @articles_bp.route("/article/<int:id>")
