@@ -134,7 +134,7 @@
     font-family: 'Rajdhani', sans-serif;
   }
 
-.recent-articles{
+.recent-articles, .all-articles{
     display: flex;
     justify-content: center;
     width: 100%;
@@ -196,4 +196,39 @@
     padding-right: 1rem;
     padding-bottom: 1rem;
     color: grey;
+}
+
+.pagination{
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.btn-current-page{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #000000;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+}
+
+.btn-page{
+    background-color: transparent;
+    color: #000000;
+    padding: 10px;
+    border: 1px solid #000000;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+}
+
+.btn-page:hover{
+    background-color: #6c6c6c;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #000000;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
 }

@@ -16,67 +16,74 @@
     </div>
 </section>
 <section id="blog">
-<div class="create-article">
-    <a href="/article/create">
-        <button class="btn-create-article">Create Article <span class="plus-sign">+</span></button>
-    </a>
-</div>
-<h2 class="articles-title">Recent Articles</h2>
-<div class="recent-articles">
-    {% if articles.items|length < 1 %}
-        <h2 class="no-articles">No Articles in this Blog :(</h2>
-    {% else %}
-        <div class="articles">
-            {% for article in recentArticles[:4]|sort(attribute='created_at', reverse=True) %}
-            <a href="/article/{{article.id}}">
-                <div class="article">
-                    <img class="article-image" src="{{ url_for('static', filename='uploaded_images/' + article.imagePath) }}" alt="Article Image">
-                    <div class="article-title">                        
-                        {{article.title}} 
-                    </div>
-                    <div class="article-content">
-                        {{article.content | striptags}}
-                    </div>
-                    <div class="article-date">
-                        {{article.created_at.strftime('%Y/%m/%d - %H:%M')}}
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
-    {% endif %}
-</div>
-<h2 class="articles-title">All Articles</h2>
-<div class="recent-articles">
-    <div class="articles">
-        {% for article in articles.items|sort(attribute='created_at', reverse=True) %}
-        <a href="/article/{{article.id}}">
-            <div class="article">
-                <img class="article-image" src="{{ url_for('static', filename='uploaded_images/' + article.imagePath) }}" alt="Article Image">
-                <div class="article-title">                        
-                    {{article.title}} 
-                </div>
-                <div class="article-content">
-                    {{article.content | striptags}}
-                </div>
-                <div class="article-date">
-                    {{article.created_at.strftime('%Y/%m/%d - %H:%M')}}
-                </div>
-            </div>
+    <div class="create-article">
+        <a href="/article/create">
+            <button class="btn-create-article">Create Article <span class="plus-sign">+</span></button>
         </a>
+    </div>
+    <h2 class="articles-title">Recent Articles</h2>
+    <div class="recent-articles">
+        {% if articles.items|length < 1 %}
+            <h2 class="no-articles">No Articles in this Blog :(</h2>
+        {% else %}
+            <div class="articles">
+                {% for article in recentArticles[:4]|sort(attribute='created_at', reverse=True) %}
+                <a href="/article/{{article.id}}">
+                    <div class="article">
+                        <img class="article-image" src="{{ url_for('static', filename='uploaded_images/' + article.imagePath) }}" alt="Article Image">
+                        <div class="article-title">                        
+                            {{article.title}} 
+                        </div>
+                        <div class="article-content">
+                            {{article.content | striptags}}
+                        </div>
+                        <div class="article-date">
+                            {{article.created_at.strftime('%Y/%m/%d - %H:%M')}}
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <h2 class="articles-title">All Articles</h2>
+    <div class="all-articles">
+        {% if articles.items|length < 1 %}
+            <h2 class="no-articles">No Articles in this Blog :(</h2>
+        {% else %}
+            <div class="articles">
+                {% for article in articles.items|sort(attribute='created_at', reverse=True) %}
+                <a href="/article/{{article.id}}">
+                    <div class="article">
+                        <img class="article-image" src="{{ url_for('static', filename='uploaded_images/' + article.imagePath) }}" alt="Article Image">
+                        <div class="article-title">                        
+                            {{article.title}} 
+                        </div>
+                        <div class="article-content">
+                            {{article.content | striptags}}
+                        </div>
+                        <div class="article-date">
+                            {{article.created_at.strftime('%Y/%m/%d - %H:%M')}}
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="pagination">
+        {% for page_num in articles.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %} 
+            {% if page_num %}
+                {% if articles.page == page_num %}
+                    <a href="{{url_for('articles.index', page=page_num)}}">
+                        <button class="btn-current-page">{{page_num}}</button></a>
+                {% else %}
+                    <a href="{{url_for('articles.index', page=page_num)}}"><button class="btn-page">{{page_num}}</button></a>
+                {% endif %}
+            {% else %}
+                ...
+            {% endif %}
         {% endfor %}
     </div>
-</div>
-{% for page_num in articles.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=1) %} 
-    {% if page_num %}
-        {% if articles.page == page_num %}
-            <a href="{{url_for('articles.index', page=page_num)}}">{{page_num}}</a>
-        {% else %}
-            <a href="{{url_for('articles.index', page=page_num)}}">{{page_num}}</a>
-        {% endif %}
-    {% else %}
-        ...
-    {% endif %}
-{% endfor %}
 </section>
 {% endblock %}
