@@ -27,7 +27,7 @@ python3 app.py
 #### Get Article by ID
 
 ```http
-  GET /articles/${id}
+GET /articles/${id}
 ```
 
 | Header Key | Header Value       | Description                       |
