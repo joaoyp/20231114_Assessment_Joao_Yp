@@ -38,11 +38,11 @@ python3 app.py
 #### Get All Articles
 
 ```http
-  GET /
+GET /
 ```
 
 ```http
-  GET /?page=${page_number}
+GET /?page=${page_number}
 ```
 
 | Header Key | Header Value       | Description                                                      |
@@ -53,11 +53,11 @@ python3 app.py
 #### Create Article
 
 ```http
-  GET /articles/create
+GET /articles/create
 ```
 
 ```http
-  POST /articles/create
+POST /articles/create
 ```
 
 | Methods | Description                                       |
@@ -68,11 +68,11 @@ python3 app.py
 #### Update Article by ID
 
 ```http
-  GET /articles/update/${id}
+GET /articles/update/${id}
 ```
 
 ```http
-  POST /articles/update/${id}
+POST /articles/update/${id}
 ```
 
 | Methods | Description                                             |
@@ -83,7 +83,7 @@ python3 app.py
 #### Delete Article by ID
 
 ```http
-  POST /articles/delete/${id}
+POST /articles/delete/${id}
 ```
 
 | Methods | Description                |
