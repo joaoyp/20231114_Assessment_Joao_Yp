@@ -15,6 +15,7 @@ main{
     justify-content: space-between;
     align-items: center;
     padding-top: 2rem;
+    border-top: 1px solid #000000;
 
 }
 
@@ -87,6 +88,7 @@ main{
 
 .top-background{
     width: 100%;
+    border-bottom: 1px solid #000000;
     height: 30vh;
     background-color: whitesmoke;
     display: flex;
@@ -95,7 +97,10 @@ main{
     align-items: center;
     color: #000000;
     font-weight: 600;
+}
 
+.top-background h1{
+    padding-bottom: 4rem;
 }
 
 .article-image{
