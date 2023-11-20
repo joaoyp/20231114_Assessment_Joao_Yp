@@ -57,13 +57,81 @@ header{
     list-style-type: none;
 }
 
+.auth-actions{
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-sign-in{
+    width: 8rem;
+    height: fit-content;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d4d4d4;
+    border-radius: 40px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: large;
+}
+
+.btn-sign-in:hover{
+    background-color: #3c3c3c;
+    color: #ffffff;
+}
+
+.btn-sign-up{
+    width: 8rem;
+    height: fit-content;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    margin-right: 2rem;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000000;
+    border-radius: 40px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: large;
+}
+
+.btn-sign-up:hover{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn-logout{
+    width: 8rem;
+    height: fit-content;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    margin-right: 2rem;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d4d4d4;
+    border-radius: 40px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: large;
+}
+
+.btn-logout:hover{
+    background-color: #3c3c3c;
+    color: #ffffff;
+}
+
+
 .menu-button, #dropdown-menu{
     display: none;
 }
 
 
-@media not all and (min-width: 640px){
-    .header-second ul{
+@media not all and (min-width: 1200px){
+    .header-second ul, .btn-sign-in, .btn-sign-up, .btn-logout{
         display: none;
     }
 
@@ -248,14 +316,14 @@ input{
     z-index: 1;
 }
 
-@media not all and (min-width: 400px){
+@media not all and (min-width: 670px){
     #dropdown-menu.show{
         flex-direction: column;
         width: fit-content;
     }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1200px) {
     #dropdown-menu.show {
         display: none;  
     }

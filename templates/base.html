@@ -38,6 +38,12 @@
                 <li><a href="/#blog">Blog</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contacts">Contacts</a></li>
+                {% if not current_user.is_authenticated %}
+                    <li><a href="{{url_for('auth.signIn')}}">Sign In</a></li>
+                    <li><a href="{{url_for('auth.signUp')}}">Sign Up</a></li>
+                {% else %}
+                    <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+                {% endif %}
             </ul>
             </div>
             <ul>
@@ -46,8 +52,16 @@
                 <li><a href="/about">About</a></li>
                 <li><a href="/contacts">Contacts</a></li>
             </ul>
-            <a href="{{url_for('auth.signIn')}}"><button>Sign In</button></a>
-            <a href="{{url_for('auth.signUp')}}"><button>Sign Up</button></a>
+            {% if not current_user.is_authenticated %}
+                <div class="auth-actions">
+                    <a href="{{url_for('auth.signIn')}}"><button class="btn-sign-in">Sign In</button></a>
+                    <a href="{{url_for('auth.signUp')}}"><button class="btn-sign-up">Sign Up</button></a>
+                </div>
+            {% else %}
+                <div class="auth-actions">
+                    <a href="{{url_for('auth.logout')}}"><button class="btn-logout">Logout</button></a>
+                </div>
+            {% endif %}
         </nav>
     </header>
     <main>
