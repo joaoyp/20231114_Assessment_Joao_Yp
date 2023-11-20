@@ -31,7 +31,7 @@ python3 app.py
   &nbsp; **Note:** See [API Reference](#api-reference) for more information
 - Pagination of articles
 - RichText Box when creating or updating an article for a more costumized article.
-- Sign-In, Sign-Up and Logout
+- Sign-In, Sign-Up (hashed password) and Logout
 - Create, Update and Delete only for users signed-in
 
 ## API Reference
