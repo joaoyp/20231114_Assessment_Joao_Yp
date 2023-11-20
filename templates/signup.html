@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Sign Up | Yp's Life Blog</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/signup.css')}}">
+{% endblock %}
+
+
+{% block main %}
+<form class="sign-up-form" action="/signup" method="POST">
+    {{ form.csrf_token }}
+    <p>{{form.username.label(class="form-username-label")}} <br> {{form.username(class="form-username-input")}}</p>
+    <p>{{form.password.label(class="form-password-label")}} <br> {{form.password(class="form-password-input")}}</p>
+    <p class="submit-p">{{form.submit(class="form-submit")}}</p>
+  </form>
+<a href="{{url_for('auth.signIn')}}"><button>Sign In</button></a>
+{% endblock %}

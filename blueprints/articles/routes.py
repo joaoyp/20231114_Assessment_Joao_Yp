@@ -7,6 +7,7 @@ from database.db import db
 from .forms import CreateArticle, UpdateArticle
 from werkzeug.utils import secure_filename
 import uuid
+from flask_login import current_user, login_required
 
 articles_bp = Blueprint("articles", __name__, template_folder="/templates")
 
@@ -34,7 +35,10 @@ def index():
         return jsonify(articles_json)
     else:
         return render_template(
-            "index.html", articles=articles, recentArticles=recentArticles
+            "index.html",
+            articles=articles,
+            recentArticles=recentArticles,
+            current_user=current_user,
         )
 
 
@@ -53,10 +57,15 @@ def getArticle(id):
 
         return jsonify(article_json)
     else:
-        return render_template("article.html", article=article)
+        return render_template(
+            "article.html",
+            article=article,
+            current_user=current_user,
+        )
 
 
 @articles_bp.route("/article/create", methods=["GET", "POST"])
+@login_required
 def createArticle():
     form = CreateArticle()
 
@@ -87,6 +96,7 @@ def createArticle():
 
 
 @articles_bp.route("/article/update/<int:id>", methods=["GET", "POST"])
+@login_required
 def updateArticle(id):
     article = Article.query.get_or_404(id)
     form = UpdateArticle(obj=article)
@@ -114,6 +124,7 @@ def updateArticle(id):
 
 
 @articles_bp.route("/article/delete/<int:id>", methods=["POST"])
+@login_required
 def deleteArticle(id):
     article_to_delete = Article.query.get_or_404(id)
 

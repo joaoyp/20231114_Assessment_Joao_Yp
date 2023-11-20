@@ -116,6 +116,10 @@ footer{
         flex-wrap: wrap;
     }
 
+    .form-newsletter{
+        padding-bottom: 4rem;
+    }
+
     .footer-first{
         text-align: center;
     }
