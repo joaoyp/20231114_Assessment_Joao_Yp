@@ -14,6 +14,13 @@ Run:
 python3 app.py
 ```
 
+**Note:** There is already articles and users in the database for testing and viewing purposes.
+<br>
+<br>
+**username:** user
+<br>
+**password:** user
+
 ## Features
 
 - CRUD of articles
