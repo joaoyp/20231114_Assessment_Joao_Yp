@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, flash
 from database.db import db
 from .models import User
 from .forms import SignUp, SignIn
@@ -43,8 +43,13 @@ def signUp():
     form = SignUp()
     if request.method == "POST":
         if form.validate_on_submit:
-            hashed_password = bcrypt.generate_password_hash(form.password.data)
-            new_user = User(username=form.username.data, password=hashed_password)
+            password = form.password.data
+            confirm_password = form.confirmPassword.data
+            if confirm_password == password:
+                hashed_password = bcrypt.generate_password_hash(form.password.data)
+                new_user = User(username=form.username.data, password=hashed_password)
+            else:
+                return redirect("/signup")
     else:
         return render_template("signup.html", form=form)
 

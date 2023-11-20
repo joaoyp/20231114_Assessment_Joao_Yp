@@ -7,11 +7,17 @@
 
 
 {% block main %}
-<form class="sign-in-form" action="/signin" method="POST">
-    {{ form.csrf_token }}
-    <p>{{form.username.label(class="form-username-label")}} <br> {{form.username(class="form-username-input")}}</p>
-    <p>{{form.password.label(class="form-password-label")}} <br> {{form.password(class="form-password-input")}}</p>
-    <p class="submit-p">{{form.submit(class="form-submit")}}</p>
-  </form>
-<a href="{{url_for('auth.signUp')}}"><button>Sign Up</button></a>
+<h1 class="title-sign-in">Sign In</h1>
+<section class="sign-in-section">
+  <form class="sign-in-form" action="/signin" method="POST">
+      {{ form.csrf_token }}
+      <p>{{form.username.label(class="form-username-label")}} <br> {{form.username(class="form-username-input")}}</p>
+      <p>{{form.password.label(class="form-password-label")}} <br> {{form.password(class="form-password-input")}}</p>
+      <p class="submit-p">{{form.submit(class="form-submit")}}</p>
+    </form>
+    <div class="create-account">
+      <p>Don't have an account?</p>
+      <a class="sign-up" href="{{url_for('auth.signUp')}}">Sign Up</a>
+    </div>
+</section>
 {% endblock %}

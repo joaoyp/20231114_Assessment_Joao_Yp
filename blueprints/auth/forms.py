@@ -4,7 +4,7 @@ from wtforms import (
     SubmitField,
     PasswordField,
 )
-from wtforms.validators import InputRequired, Length, ValidationError
+from wtforms.validators import InputRequired, Length, ValidationError, EqualTo
 from .models import User
 
 
@@ -18,6 +18,15 @@ class SignUp(FlaskForm):
         "Password:",
         validators=[InputRequired(), Length(min=4, max=20)],
         render_kw={"placeholder": "Password"},
+    )
+    confirmPassword = PasswordField(
+        "Confirm Password:",
+        validators=[
+            InputRequired(),
+            Length(min=4, max=20),
+            EqualTo("password", message="Passwords must match"),
+        ],
+        render_kw={"placeholder": "Confirm Password"},
     )
     submit = SubmitField("Sign Up")
 
