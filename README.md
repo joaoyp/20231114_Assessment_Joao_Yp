@@ -20,6 +20,9 @@ python3 app.py
 **username:** user
 <br>
 **password:** user
+<br>
+<br>
+**Note 2:** For compatibility reasons in my local machines, I changed the server port to 3000 so the page would be: 127.0.0.1:3000 / localhost:3000
 
 ## Features
 
